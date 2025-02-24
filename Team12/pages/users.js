@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'; // Import useState and useEffect
-
 export async function getServerSideProps() {
     const res = await fetch('http://localhost:3000/api/data');
     const users = await res.json();
