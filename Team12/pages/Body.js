@@ -6,6 +6,7 @@ import Link from 'next/link';
 import BackToTop from '../components/BackToTop';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBriefcase } from '@fortawesome/free-solid-svg-icons';
+import Login from './Login';
 
 const Body = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -51,6 +52,7 @@ const Body = () => {
 
       <header className="flex flex-col min-h-screen bg-gray-100 ">
         <Header />
+        <Login />
         <HeroBanner />
           <h1 className='justify-center'>
             Welcome to the Body Content 
