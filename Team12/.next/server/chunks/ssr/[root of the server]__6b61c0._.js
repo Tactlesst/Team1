@@ -127,108 +127,69 @@ __turbopack_esm__({
     "getServerSideProps": (()=>getServerSideProps)
 });
 var __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__ = __turbopack_import__("[externals]/react/jsx-dev-runtime [external] (react/jsx-dev-runtime, cjs)");
-var __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__ = __turbopack_import__("[externals]/react [external] (react, cjs)"); // Import useState and useEffect
-;
 ;
 async function getServerSideProps() {
-    const res = await fetch('http://localhost:3000/api/data');
-    const users = await res.json();
-    return {
-        props: {
-            users
+    try {
+        const res = await fetch('http://localhost:3000/api/data');
+        if (!res.ok) {
+            console.error(`API returned an error: ${res.status} ${res.statusText}`);
+            return {
+                props: {
+                    users: []
+                }
+            }; // Return empty array on error
         }
-    };
+        const users = await res.json();
+        return {
+            props: {
+                users
+            }
+        };
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        return {
+            props: {
+                users: []
+            }
+        }; // Return empty array on error
+    }
 }
 function UsersPage({ users }) {
-    const [sortedUsers, setSortedUsers] = (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useState"])(users); // State for sorted users
-    const [sortKey, setSortKey] = (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useState"])(null); // State for the current sort key
-    const [sortDirection, setSortDirection] = (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useState"])('asc'); // State for sort direction
-    // Function to handle sorting
-    const handleSort = (key)=>{
-        if (key === sortKey) {
-            setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
-        } else {
-            setSortKey(key);
-            setSortDirection('asc');
-        }
-        const sorted = [
-            ...users
-        ].sort((a, b)=>{
-            const aValue = a[key]?.toString().toLowerCase() || ''; // Handle null/undefined
-            const bValue = b[key]?.toString().toLowerCase() || '';
-            const order = sortDirection === 'asc' ? 1 : -1;
-            return aValue.localeCompare(bValue) * order;
-        });
-        setSortedUsers(sorted);
-    };
+    if (!users || users.length === 0) {
+        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
+            children: "No users found."
+        }, void 0, false, {
+            fileName: "[project]/pages/users.js",
+            lineNumber: 20,
+            columnNumber: 14
+        }, this); // Handle empty data
+    }
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("h1", {
                 children: "Users"
             }, void 0, false, {
                 fileName: "[project]/pages/users.js",
-                lineNumber: 34,
-                columnNumber: 13
+                lineNumber: 25,
+                columnNumber: 9
             }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("table", {
-                children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("thead", {
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("tr", {
-                            children: Object.keys(users[0] || {}).map((key)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("th", {
-                                    onClick: ()=>handleSort(key),
-                                    style: {
-                                        cursor: 'pointer'
-                                    },
-                                    children: [
-                                        key,
-                                        sortKey === key && (sortDirection === 'asc' ? ' ▲' : ' ▼'),
-                                        " "
-                                    ]
-                                }, key, true, {
-                                    fileName: "[project]/pages/users.js",
-                                    lineNumber: 40,
-                                    columnNumber: 29
-                                }, this))
-                        }, void 0, false, {
-                            fileName: "[project]/pages/users.js",
-                            lineNumber: 37,
-                            columnNumber: 21
-                        }, this)
-                    }, void 0, false, {
-                        fileName: "[project]/pages/users.js",
-                        lineNumber: 36,
-                        columnNumber: 17
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("tbody", {
-                        children: sortedUsers.map((user)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("tr", {
-                                children: Object.keys(users[0] || {}).map((key)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("td", {
-                                        children: user[key]
-                                    }, key, false, {
-                                        fileName: "[project]/pages/users.js",
-                                        lineNumber: 52,
-                                        columnNumber: 33
-                                    }, this))
-                            }, user.id, false, {
-                                fileName: "[project]/pages/users.js",
-                                lineNumber: 49,
-                                columnNumber: 25
-                            }, this))
-                    }, void 0, false, {
-                        fileName: "[project]/pages/users.js",
-                        lineNumber: 47,
-                        columnNumber: 17
-                    }, this)
-                ]
-            }, void 0, true, {
-                fileName: "[project]/pages/users.js",
-                lineNumber: 35,
-                columnNumber: 13
-            }, this)
+            users.map((user)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("p", {
+                    children: [
+                        user.FirstName,
+                        " ",
+                        user.LastName
+                    ]
+                }, user.UserID, true, {
+                    fileName: "[project]/pages/users.js",
+                    lineNumber: 27,
+                    columnNumber: 11
+                }, this) // Use UserID as key, and other properties from the database.
+            )
         ]
     }, void 0, true, {
         fileName: "[project]/pages/users.js",
-        lineNumber: 33,
-        columnNumber: 9
+        lineNumber: 24,
+        columnNumber: 7
     }, this);
 }
 }}),

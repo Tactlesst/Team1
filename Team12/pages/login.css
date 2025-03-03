@@ -1,112 +1,129 @@
 /* login.css */
 .login-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
-  }
-  
-  .login-box {
-    background-color: #fff;
-    padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    display: flex;
-    gap: 60px; /* Increased gap for better visual separation */
-    align-items: center;
-  }
-  
-  .login-form {
-    flex: 1;
-  }
-  
-  .login-form h2 {
-    color: #333;
-    margin-bottom: 10px;
-  }
-  
-  .login-form p {
-    color: #666;
-    margin-bottom: 20px;
-  }
-  
-  .login-form input {
-    width: calc(100% - 22px);
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-  }
-  
-  .login-form button {
-    background-color: #4285f4;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    width: 100%;
-  }
-  
-  .login-form .forgot-password {
-    display: block;
-    margin-top: 10px;
-    text-align: center;
-    color: #4285f4;
-    text-decoration: none;
-  }
-  
-  .login-form .register-link {
-    text-align: center;
-    margin-top: 20px;
-  }
-  
-  .qr-code-section {
-    text-align: center;
-  }
-  
-  .qr-code-section h3 {
-    margin-bottom: 10px;
-  }
-  
-  .qr-code-section p {
-    color: #777;
-    margin-top: 10px;
-  }
-  
-  .error { /* Style for error messages */
-    color: red;
-    margin-bottom: 10px;
-  }
-  
-  .success { /* Style for success messages */
-    color: green;
-    margin-bottom: 10px;
-  }
-  
-  .go-back-button {
-    background-color: #ddd; /* Light gray background */
-    color: #333; /* Dark gray text */
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-top: 20px; /* Add some space above the button */
-    align-self: center; /* Center the button in the login-box */
-    transition: background-color 0.3s ease; /* Smooth hover effect */
-  }
-  
-  .go-back-button:hover {
-    background-color: #ccc; /* Slightly darker gray on hover */
-  }
-  
-  /* Optional: Style the button as a link if you prefer */
-  .go-back-button.as-link {
-    background: none;
-    color: #4285f4; /* Example blue color */
-    text-decoration: underline;
-    padding: 0; /* Remove padding */
-    margin-top: 10px;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-image: url('/images/background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative; /* Required for absolute positioning of blue-fade */
+  padding: 20px; /* Add margin around the container */
+  box-sizing: border-box; /* Include padding in the container's size */
+}
+
+.blue{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(5, 53, 109, 0.6), transparent); /* Adjusted opacity */
+  mix-blend-mode: overlay;
+}
+.login-box {
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  gap: 60px;
+  align-items: center;
+  max-width: 1200px; /* Optional: limit the width of the login box */
+  width: 90%; /* Take up 90% of the container width*/
+  z-index: 1; /* Ensure login box is above the blue fade */
+}
+
+.login-form {
+  flex: 1;
+}
+
+.login-form h2 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.login-form p {
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.login-form input {
+  width: calc(100% - 22px);
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.login-form button {
+  background-color: #4285f4;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.login-form .forgot-password {
+  display: block;
+  margin-top: 10px;
+  text-align: center;
+  color: #4285f4;
+  text-decoration: none;
+}
+
+.login-form .register-link {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.qr-code-section {
+  text-align: center;
+}
+
+.qr-code-section h3 {
+  margin-bottom: 10px;
+}
+
+.qr-code-section p {
+  color: #777;
+  margin-top: 10px;
+}
+
+.error {
+  color: red;
+  margin-bottom: 10px;
+}
+
+.success {
+  color: green;
+  margin-bottom: 10px;
+}
+
+.go-back-button {
+  background-color: #ddd;
+  color: #333;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 20px;
+  align-self: center;
+  transition: background-color 0.3s ease;
+}
+
+.go-back-button:hover {
+  background-color: #ccc;
+}
+
+.go-back-button.as-link {
+  background: none;
+  color: #4285f4;
+  text-decoration: underline;
+  padding: 0;
+  margin-top: 10px;
+}

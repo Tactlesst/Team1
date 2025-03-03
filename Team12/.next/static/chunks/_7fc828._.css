@@ -24,7 +24,23 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+  background-image: url("/images/Rectangle 23.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.blue {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, #05356d99, #0000);
+  mix-blend-mode: overlay;
 }
 
 .login-box {
@@ -35,6 +51,9 @@
   display: flex;
   gap: 60px;
   align-items: center;
+  max-width: 1200px;
+  width: 90%;
+  z-index: 1;
 }
 
 .login-form {

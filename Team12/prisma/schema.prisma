@@ -14,3 +14,12 @@ model users {
   Email     String @unique(map: "Email") @db.VarChar(255)
   Password  String @db.VarChar(255)
 }
+
+model admins {
+  id      Int    @id @default(autoincrement())
+  fname   String @db.VarChar(255)
+  lname   String @db.VarChar(255)
+  emails  String @db.VarChar(255)
+  pnum    String @db.VarChar(255)
+  deleted Int?   @default(0)
+}

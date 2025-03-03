@@ -32,6 +32,7 @@ export default function Login() {
 
   return (
     <div className="login-container">
+            <div className="blue"></div> 
       <div className="login-box">
         <button onClick={() => router.push('/')} className="go-back-button">
           Go Back
